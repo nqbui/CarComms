@@ -7,9 +7,8 @@ def Main():
         port = input("Enter Port to send to: ")
         print("starting...")
         mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        for x in range(0,60):
-                rightNow = datetime.datetime.now()
-                message="Time sent: " + datetime.datetime.now().strftime("%H:%M:%S.%f")
+        for x in range(0,120):
+                message="#" + x + ", Time sent: " + datetime.datetime.now().strftime("%H:%M:%S.%f")
                 mySocket.sendto(message.encode(),(host,int(port)))       
                 time.sleep(.5) #wait .5 secs
                  
