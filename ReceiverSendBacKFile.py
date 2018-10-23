@@ -13,10 +13,9 @@ def Main():
         mySocket.bind(('0.0.0.0', int(listeningPort)))
         data = ""
         while data != 'q':
-                data = mySocket.recv(512).decode()
-                print("Received this:"+data)
-                message="Received: " + data
-                mySocket.sendto(message.encode(),(host,int(port)))     
+                data = mySocket.recv(2097152).decode()
+                print("Received file length "+str(len(data)))
+                mySocket.sendto(data.encode(),(host,int(port)))     
                  
         mySocket.close()
  
