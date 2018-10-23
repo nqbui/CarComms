@@ -13,7 +13,7 @@ def Main():
         mySocket.bind(('0.0.0.0', int(listeningPort)))
         data = ""
         while data != 'q':
-                data = mySocket.recv(2097152).decode()
+                data = mySocket.recv(4096).decode()
                 print("Received file length "+str(len(data)))
                 mySocket.sendto(data.encode(),(host,int(port)))     
                  

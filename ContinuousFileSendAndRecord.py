@@ -10,7 +10,7 @@ def Main():
         listeningPort = input("Enter listening port: ")
         filename = input("Name of file to send: ")
         filehandle=open(filename,"rb")
-        message=filehandle.read(2097152)
+        message=filehandle.read(4096)
         messageLength=str(len(message))
         distance=input("Enter distance: ")
         speed=input("Enter speed: ")
@@ -21,12 +21,12 @@ def Main():
         for x in range(0,2): # x will go from 0 to less than the second number
                 dataRecordFile.write(str(x) +","+ datetime.datetime.now().strftime("%H:%M:%S.%f"))
                 mySocket.sendto(message,(host,int(port)))
-                dataRecv = mySocket.recv(2097152).decode()
+                dataRecv = mySocket.recv(4096)
                 dataRecordFile.write(","+ datetime.datetime.now().strftime("%H:%M:%S.%f")+","+distance+","+speed+","+messageLength+"\r\n")
                 time.sleep(.5) #wait .5 secs
 
-        messageToSend="q"
-        mySocket.sendto(messageToSend.encode(),(host,int(port)))
+        message="q"
+        mySocket.sendto(message.encode(),(host,int(port)))
         mySocket.close()
         
         dataRecordFile.close()
