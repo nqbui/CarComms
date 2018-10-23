@@ -21,7 +21,7 @@ def Main():
         for x in range(0,2): # x will go from 0 to less than the second number
                 dataRecordFile.write(str(x) +","+ datetime.datetime.now().strftime("%H:%M:%S.%f"))
                 mySocket.sendto(message,(host,int(port)))
-                dataRecv = mySocket.recv(512).decode()
+                dataRecv = mySocket.recv(2097152).decode()
                 dataRecordFile.write(","+ datetime.datetime.now().strftime("%H:%M:%S.%f")+","+distance+","+speed+","+messageLength+"\r\n")
                 time.sleep(.5) #wait .5 secs
 
