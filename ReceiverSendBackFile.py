@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #This script acts just like a server
 #It waits to receive a message then sends a message back
 import socket
@@ -12,7 +13,7 @@ def Main():
         mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         mySocket.bind(('0.0.0.0', int(listeningPort)))
         data = ""
-        while data != 'q':
+        while True:
                 data = mySocket.recv(65536).decode()
                 print("Received file length "+str(len(data)))
                 mySocket.sendto(data.encode(),(host,int(port)))     
