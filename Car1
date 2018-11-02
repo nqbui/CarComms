@@ -16,11 +16,11 @@ def Main():
 
         dataRecordFile=open(filepath,'a')
 
-        host = '192.168.1.11' #Car 2 IP. Reference the Interim Report
+        host = '192.168.1.12' #Car 2 IP
 
-        port = 5001 #Car 2 port num
+        port = 5002 #Car 2 port num
 
-        listeningPort = 5000 #Car 1 port num (what Car 1 is listening to)
+        listeningPort = 5001 #Car 1 port num (what Car 1 is listening to)
 
         filename = 'largefile.txt' #largefile.txt is a 1.47kb text file
 
@@ -42,7 +42,7 @@ def Main():
 
         mySocket.bind(('0.0.0.0', int(listeningPort)))
 
-        for x in range(0,10): # x will go from 0 to less than the second number
+        for x in range(0,5): # x will go from 0 to less than the second number
 
                 timeNow = datetime.datetime.now()
 
@@ -58,15 +58,11 @@ def Main():
 
                 time.sleep(1) #wait 1 secs
 
-
-
         message="q"
 
         mySocket.sendto(message.encode(),(host,int(port)))
 
         mySocket.close()
-
-        
 
         dataRecordFile.close()
 
