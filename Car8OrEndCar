@@ -14,13 +14,9 @@ def Main():
         port = 5007 #input("Enter Port to send back to: ")
 
         print("starting...")
-
         mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
         mySocket.bind(('0.0.0.0', int(listeningPort)))
-
         data = ""
-
         while True:
                 data = mySocket.recv(4096).decode()
                 print("Received file length "+str(len(data)))
