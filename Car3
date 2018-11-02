@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# This script is for Cars 2 thru 7 or the middle cars.
+# This script is for Car 3.
 #This script is like ReceiverSendBackFile.py except that it receives and sends back twice since it's in the middle
 #It waits to receive a message then sends a message back
 
