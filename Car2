@@ -31,7 +31,7 @@ def Main():
                 data = mySocket.recv(expectedFileSize).decode() #receive message
                 print("Received file length "+str(len(data)))
                 #Send back to the lower host
-                mySocket.sendto(data.encode(),(hostLower,int(potrLower))) #Send back to the "Lower" host
+                mySocket.sendto(data.encode(),(hostLower,int(portLower))) #Send back to the "Lower" host
 
         mySocket.close()
 
