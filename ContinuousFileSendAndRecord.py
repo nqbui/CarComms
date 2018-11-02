@@ -21,10 +21,12 @@ def Main():
         mySocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         mySocket.bind(('0.0.0.0', int(listeningPort)))
         for x in range(0,10): # x will go from 0 to less than the second number
-                dataRecordFile.write(str(x) +","+ datetime.datetime.now().strftime("%H:%M:%S.%f"))
+                timeNow = datetime.datetime.now()
+                dataRecordFile.write(str(x) +","+ timeNow.strftime("%H:%M")+","+timeNow.strftime("%S.%f"))
                 mySocket.sendto(message,(host,int(port)))
                 dataRecv = mySocket.recv(expectedFileSize)
-                dataRecordFile.write(","+ datetime.datetime.now().strftime("%H:%M:%S.%f")+","+distance+","+speed+","+messageLength+"\r\n")
+                timeNow = datetime.datetime.now()
+                dataRecordFile.write(","+ timeNow.strftime("%H:%M")+","+timeNow.strftime("%S.%f")+","+distance+","+speed+","+messageLength+"\r\n")
                 time.sleep(.5) #wait .5 secs
 
         message="q"
