@@ -5,16 +5,12 @@
 
 import socket
 import datetime
-
-
  
 
 def Main():
 
-        listeningPort = 5008
-
+        listeningPort = 5008 #listening port number for Car8
         host = '192.168.1.17' #See Interim Report for IP and Port number assignments #input("Enter IP to send back to: ")
-
         port = 5007 #input("Enter Port to send back to: ")
 
         print("starting...")
@@ -26,18 +22,11 @@ def Main():
         data = ""
 
         while True:
-
                 data = mySocket.recv(4096).decode()
-
                 print("Received file length "+str(len(data)))
+                mySocket.sendto(data.encode(),(host,int(port)))                   
 
-                mySocket.sendto(data.encode(),(host,int(port)))     
-
-                 
-
-        mySocket.close()
-
- 
+        mySocket.close() 
 
 if __name__ == '__main__':
 
